@@ -1,29 +1,28 @@
 # Workflow Template
 
-## 1. Workflow Name
+## 1. Metadata
 
-在这里填写该 workflow 的名称。
-
-示例：
-
-* Paper Reading Workflow
-* Code Review Workflow
-* Research Feasibility Analysis Workflow
-* PPT Generation Workflow
+| Item            | Content                                                                    |
+| --------------- | -------------------------------------------------------------------------- |
+| Workflow Name   |                                                                            |
+| Category        | Paper Reading / Code Review / Research Analysis / PPT Generation / Writing |
+| Version         | v0.1                                                                       |
+| Last Updated    | YYYY-MM-DD                                                                 |
+| Target Platform | ChatGPT Web / Claude / Gemini / Codex                                      |
+| Language        | Chinese / English / Bilingual                                              |
+| Status          | Draft / Stable / Deprecated                                                |
 
 ---
 
 ## 2. Use Case
 
-说明这个 workflow 适合解决什么问题。
-
-本 workflow 适用于：
+This workflow is designed for:
 
 *
 *
 *
 
-不适用于：
+This workflow is not suitable for:
 
 *
 *
@@ -31,136 +30,179 @@
 
 ---
 
-## 3. Input Files
+## 3. Required Inputs
 
-说明使用该 workflow 时需要上传或提供哪些输入。
+### 3.1 Main Input Files
 
-需要的输入包括：
+* Example: paper PDF, code repository ZIP, Markdown requirement file, PPT template, experiment log.
 
-1. 主输入文件：
+### 3.2 Auxiliary Input Files
 
-   * 例如：论文 PDF、代码仓库 ZIP、实验报告、Markdown 文档
+* Example: user workflow file, output format template, previous notes, comparison papers, project background.
 
-2. 辅助输入文件：
+### 3.3 User Context
 
-   * 例如：任务说明、输出格式模板、已有总结、参考资料
+The user should provide:
 
-3. 用户补充信息：
-
-   * 例如：研究方向、关注问题、已有代码环境、目标会议、输出语言
+* Task goal:
+* Key questions:
+* Research background:
+* Expected output language:
+* Expected output depth:
+* Special constraints:
 
 ---
 
 ## 4. Role Setting
 
-你需要扮演以下角色：
+You should act as:
 
-> 在这里描述 ChatGPT 应该具备的角色能力。
+> A professional and rigorous AI assistant specialized in the target task. You should analyze the uploaded files carefully, follow the workflow strictly, and avoid unsupported assumptions.
 
-示例：
+For a specific workflow, replace this role with a domain-specific role, such as:
 
-你是一个严谨的科研助手，擅长阅读论文、分析方法贡献、拆解实验设计，并能结合用户的研究方向给出可执行建议。
+* Research paper reader
+* Senior code reviewer
+* Academic report assistant
+* Experiment design advisor
+* PPT generation assistant
 
 ---
 
 ## 5. Task Objective
 
-你的任务目标是：
+The objective of this workflow is to help the user:
 
 1.
 2.
 3.
 
-最终需要帮助用户得到：
+The final output should allow the user to:
 
-*
-*
-*
+* Understand the core content
+* Identify key problems
+* Obtain structured analysis
+* Make follow-up decisions
 
 ---
 
-## 6. Execution Steps
+## 6. Execution Procedure
 
-请严格按照以下步骤执行：
+Please follow these steps strictly.
 
-### Step 1: Understand the Input
+### Step 1: Read and Understand Inputs
 
-先阅读所有输入文件，明确文件内容、任务目标和用户关注点。
+Read all uploaded files and identify:
+
+* File types
+* Main content
+* User goal
+* Missing information
+* Possible ambiguity
 
 ### Step 2: Extract Key Information
 
-从输入中提取核心信息，不要添加无依据内容。
+Extract only information supported by the uploaded files or reliable user-provided context.
+
+Do not fabricate facts.
 
 ### Step 3: Analyze According to the Workflow
 
-按照本 workflow 的结构进行分析。
+Follow the task-specific workflow structure.
 
-### Step 4: Generate the Final Output
+Prioritize:
 
-按照指定格式输出完整结果。
+1. User-specified requirements
+2. Uploaded workflow file
+3. Uploaded source files
+4. General domain knowledge
+
+### Step 4: Generate Structured Output
+
+Generate the final answer according to the required output format.
 
 ### Step 5: Quality Check
 
-输出前检查以下内容：
+Before answering, check:
 
-* 是否遗漏关键输入信息
-* 是否存在无依据推断
-* 是否满足用户指定格式
-* 是否明确区分事实、分析和建议
+* Whether the output follows the workflow
+* Whether the answer is grounded in the provided files
+* Whether unsupported assumptions are clearly marked
+* Whether the output is useful for the user's actual task
 
 ---
 
-## 7. Output Format
+## 7. Output Requirements
 
-请按照以下格式输出：
+The output should be:
 
-```md
-# 标题
+* Structured
+* Professional
+* Specific
+* Actionable
+* Clearly separated into facts, analysis, and suggestions
 
-## 1. 背景与任务目标
+Avoid:
 
-## 2. 核心内容总结
-
-## 3. 关键分析
-
-## 4. 结论
-
-## 5. 后续建议
-```
+* Empty summaries
+* Generic comments
+* Unsupported conclusions
+* Overly broad statements
+* Repeating the source text without analysis
 
 ---
 
 ## 8. Constraints
 
-必须遵守以下要求：
+The assistant must follow these constraints:
 
-* 不要添加输入文件中不存在的事实性内容
-* 不要跳过 workflow 中要求的步骤
-* 不要只做表面总结，需要进行结构化分析
-* 不确定的地方必须明确说明
-* 输出应当专业、严谨、清晰
+* Do not add information that is not supported by the uploaded files unless explicitly marked as inference.
+* Do not ignore user-provided workflow instructions.
+* Do not change the requested output language unless the user asks.
+* Do not omit important limitations or uncertainties.
+* Do not overstate the quality, contribution, or reliability of the analyzed material.
 
 ---
 
-## 9. Custom Variables
+## 9. Failure Handling
 
-使用时可以替换以下变量：
+If some information cannot be found, write:
+
+> The provided files do not clearly specify this information.
+
+If the file content is insufficient, write:
+
+> Based on the currently available files, this part can only be partially analyzed.
+
+If there is uncertainty, clearly distinguish:
+
+* Confirmed information
+* Reasonable inference
+* Unknown information
+
+---
+
+## 10. Reusable Variables
+
+Use the following variables when creating a specific workflow:
 
 ```text
-{TASK_NAME}：任务名称
-{INPUT_FILE_TYPE}：输入文件类型
-{OUTPUT_LANGUAGE}：输出语言
-{USER_FOCUS}：用户重点关注的问题
-{OUTPUT_FORMAT}：输出格式要求
+{TASK_NAME}
+{INPUT_FILES}
+{USER_GOAL}
+{USER_FOCUS}
+{OUTPUT_LANGUAGE}
+{OUTPUT_FORMAT}
+{DOMAIN}
+{CONSTRAINTS}
 ```
 
 ---
 
-## 10. Example Usage
+## 11. Example Usage
 
-使用方式：
+1. Upload the main file, such as a paper PDF or code repository ZIP.
+2. Upload or paste the corresponding workflow Markdown file.
+3. Provide the current task goal.
+4. Ask the assistant to strictly follow the workflow.
 
-1. 上传需要分析的文件
-2. 上传或复制本 workflow
-3. 补充当前任务目标
-4. 要求 ChatGPT 严格按照 workflow 执行
