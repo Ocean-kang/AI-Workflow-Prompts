@@ -13,6 +13,8 @@
 - `domain-paper-search/`：用于特定领域论文检索、筛选和整理的 Prompt 工作流。
 - `code-generation/`：用于科研代码生成、理解和修改的 Prompt 工作流。
 
+其中 `templates/interactive-controller-template.md` 是通用交互控制模块，用于定义 Ask-First / Interactive Mode 的需求澄清门控。面向 ChatGPT 网页版日常使用时，更推荐将该控制模块融合进专业任务模板，形成完整的 `*-interactive.md` 文件。
+
 ## 共享文档约定
 
 - `AGENTS.md` 定义 Codex 或其他代码助手在本仓库中的工作方式。
@@ -41,6 +43,13 @@
 10. 可复用变量或示例用法
 
 具体标题可以根据任务调整，但工作流应保持易复用、易改写、易执行。
+
+对于重要任务 Prompt，默认同时维护两种版本：
+
+- Direct Mode：通用执行版本，适合需求已经明确时直接执行。
+- Interactive Mode / Ask-First Mode：交互询问版本，文件名通常使用 `*-interactive.md`，适合需求尚不完全明确时先提问、再执行。
+
+交互版模板不替代直接执行版模板。新增交互版时，应尽量复用对应 Direct Mode 的专业任务逻辑，只增加需求澄清门控。日常使用时，不建议让用户每次上传“总控模板 + 专业模板 + 文件”，更推荐上传“融合好的交互版专业模板 + 文件”。
 
 ## 内容准则
 

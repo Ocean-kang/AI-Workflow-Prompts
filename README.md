@@ -38,6 +38,15 @@
 6. 检查结果：确认 ChatGPT 没有编造信息，必要时要求它标注“论文明确说明”“合理推断”“未知信息”。
 7. 沉淀改进：如果某次改写具有长期复用价值，再整理回对应 Prompt 文件。
 
+## 两种使用模式
+
+本仓库同时支持两种 Prompt 使用方式：
+
+- Direct Mode：直接执行版模板。适合任务目标、输入材料、输出格式和约束条件已经明确的场景。使用时上传任务文件，并粘贴或上传对应的普通模板，例如 `gpt-paper-reading.md`。
+- Interactive Mode / Ask-First Mode：交互询问版模板。适合需求还不完全明确的场景。ChatGPT 会先阅读文件并提出澄清问题，只有当用户明确回复“开始实现 / 可以开始 / 按当前信息执行 / 不用再问了”等指令后，才进入正式执行阶段。
+
+日常使用时，推荐直接上传已经融合好的 `*-interactive.md` 专业模板和任务文件，而不是每次同时上传“总控模板 + 专业模板 + 文件”。
+
 ## Prompt 文件夹说明
 
 ### `paper-reading/`
@@ -61,13 +70,15 @@
 1. 在 ChatGPT 网页版上传论文 PDF。
 2. 选择并粘贴或上传以下任一 Prompt：
    - `paper-reading/gpt-paper-reading.md`
+   - `paper-reading/gpt-paper-reading-interactive.md`
    - `paper-reading/gpt-paper-reading-old.md`
 3. 补充你的研究背景、关注问题和希望输出的深度。
 4. 要求 ChatGPT 优先依据论文 PDF，不确定信息必须明确标注。
 
-两个论文阅读入口是平等展示的：
+论文阅读入口说明：
 
 - `paper-reading/gpt-paper-reading.md`：当前版本，更强调事实来源、问题-方案-证据对应、方法机制、实验支撑和与用户研究方向的关系。
+- `paper-reading/gpt-paper-reading-interactive.md`：交互执行版，适合先澄清阅读目的、关注重点和输出用途，再执行完整论文分析。
 - `paper-reading/gpt-paper-reading-old.md`：旧版增强模板，结构完整，适合需要保留原有阅读框架或对比不同阅读风格时使用。
 
 ### `domain-paper-search/`
@@ -95,6 +106,8 @@
 3. 在 ChatGPT 网页版粘贴 Prompt，并明确要求它进行网络检索。
 4. 检查输出是否核实 venue，是否把 arXiv 与正式发表论文区分开。
 
+如果检索范围还不明确，可使用 `domain-paper-search/domain-paper-search-interactive.md`，让 ChatGPT 先确认关键词、排除方向、时间范围、会议范围和 arXiv 规则。
+
 ### `code-generation/`
 
 用于上传科研代码仓库或关键源码后，让 ChatGPT 帮助理解代码、定位问题、设计最小修改方案并给出验证方法。
@@ -119,6 +132,8 @@
 3. 补充 `{PROJECT_BACKGROUND}`、`{CURRENT_PROBLEMS}`、`{TARGET_REQUIREMENTS}`、`{CONSTRAINTS}` 和 `{EXPECTED_OUTPUT}`。
 4. 要求 ChatGPT 先理解代码和需求，再给出修改方案；不要在需求不清时直接生成代码。
 
+如果任务边界还不清楚，可使用 `code-generation/llm-research-code-generation-interactive.md`，先确认任务类型、可修改范围、输出形式、不可改内容和验证命令。
+
 ### `templates/`
 
 用于创建新的通用 Prompt 或 Workflow，也可以作为改写现有 Prompt 的结构参考。
@@ -128,6 +143,7 @@
 - `templates/workflow-template.md`：工作流模板，适合定义完整任务流程、输入、角色、输出、约束和失败处理。
 - `templates/prompt-template.md`：通用 Prompt 模板，适合快速组织“上传文件 + 按 workflow 执行”的任务。
 - `templates/output-format-template.md`：输出格式模板，适合统一报告、表格、清单或结构化结果。
+- `templates/interactive-controller-template.md`：通用交互控制模块，适合融合到专业任务模板中，形成完整的 `*-interactive.md` 交互执行版模板。
 
 适用场景：
 
@@ -151,6 +167,7 @@
 - 分析型任务应要求区分已确认事实、合理推断和未知信息。
 - 不要在通用模板中加入缺乏依据的事实、结论或领域判断。
 - 修改已有 Prompt 时，应保留原本的目标用户、任务范围和输出意图。
+- 新增重要任务 Prompt 时，默认同时提供 Direct Mode 通用执行版和 Interactive Mode 交互询问版；交互版不替代直接执行版。
 
 ## 本地任务记录
 
