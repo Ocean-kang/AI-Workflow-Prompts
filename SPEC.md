@@ -12,7 +12,7 @@
 - `paper-reading/`：用于论文阅读、理解和分析的 Prompt 工作流。
 - `domain-paper-search/`：用于特定领域论文检索、筛选和整理的 Prompt 工作流。
 - `code-generation/`：用于科研代码生成、理解和修改的 Prompt 工作流。
-- `presentation-generation/`：用于将论文、笔记、项目材料等科研内容转化为 PPT 逐页规划和 PPTX 生成规格的 Prompt 工作流。
+- `presentation-generation/`：用于将论文、笔记、项目材料等科研内容转化为 PPT 逐页规划、PPTX 生成规格，并在已有指导文件基础上制作 PPTX 的 Prompt 工作流。
 
 其中 `templates/interactive-controller-template.md` 是通用交互控制模块，用于定义 Ask-First / Interactive Mode 的需求澄清门控。面向 ChatGPT 网页版日常使用时，更推荐将该控制模块融合进专业任务模板，形成完整的 `*-interactive.md` 文件。
 

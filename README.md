@@ -1,6 +1,6 @@
 # AI-Workflow-Prompts
 
-这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、领域论文检索、科研代码生成、科研展示生成和通用工作流模板等可复用提示词。
+这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、领域论文检索、科研代码生成、科研展示规划与制作、通用工作流模板等可复用提示词。
 
 本仓库的核心使用方式是：先在网页版 ChatGPT 中上传任务材料，例如论文 PDF、代码仓库 ZIP、实验日志、需求说明或已有笔记，再粘贴或上传本仓库中对应的 Prompt，让 ChatGPT 按照结构化工作流完成分析、检索、修改建议或输出整理。
 
@@ -136,7 +136,7 @@
 
 ### `presentation-generation/`
 
-用于上传论文 PDF、Markdown 笔记、Word 文档或项目材料后，让 ChatGPT 生成科研 PPT 的逐页规划和可用于制作 PPTX 的结构化规格。
+用于上传论文 PDF、Markdown 笔记、Word 文档或项目材料后，让 ChatGPT 完成科研 PPT 的两阶段工作流：先生成逐页规划和 PPTX 结构化规格，再在已有 PPT 指导文件基础上直接制作可下载 PPTX。
 
 适用场景：
 
@@ -144,6 +144,7 @@
 - 课题进展、项目总结、实验结果汇报。
 - 将较长材料压缩成简洁、专业、体面的科研展示。
 - 为 PPT 插件、自动化脚本或人工制作提供结构化输入。
+- 在已有 PPT 指导文件、逐页规划或 JSON 规格基础上生成实际 PPTX。
 
 常见输入材料：
 
@@ -151,8 +152,12 @@
 - 项目说明、实验报告、阶段总结。
 - 少量辅助表格、图片、公式、结果截图或已有 PPT 草稿。
 - 展示场景、目标受众、建议时长、目标页数和特殊要求。
+- 上一步 Prompt 生成的 PPT 指导文件、逐页规划、图表建议或 PPTX 规格。
+- 可选 PPT 模板、学校/课题组风格、Logo、配色、字体或页面比例要求。
 
 使用方法：
+
+规划阶段：
 
 1. 在 ChatGPT 网页版上传科研材料。
 2. 选择并粘贴或上传以下任一 Prompt：
@@ -161,10 +166,21 @@
 3. 补充展示目标、目标受众、时长、页数、技术深度和特殊约束。
 4. 要求 ChatGPT 输出逐页 PPT 规划、图表建议、讲者备注和 JSON PPTX 生成规格。
 
+制作阶段：
+
+1. 在 ChatGPT 网页版上传原始材料、上一阶段生成的 PPT 指导文件，以及可选 PPT 模板或素材。
+2. 选择并粘贴或上传以下任一 Prompt：
+   - `presentation-generation/ppt-making.md`
+   - `presentation-generation/ppt-making-interactive.md`
+3. 要求 ChatGPT 按指导文件优先生成可下载 `.pptx`。
+4. 如果当前环境不能生成文件，要求它输出完整 `python-pptx` 脚本、JSON slide spec、素材清单和人工制作说明。
+
 科研 PPT 生成入口说明：
 
 - `presentation-generation/research-ppt-generation.md`：直接执行版，适合展示目标、受众和页数已经比较明确时使用。
 - `presentation-generation/research-ppt-generation-interactive.md`：交互执行版，适合先澄清展示场景、受众、时长、页数、技术深度和设计限制，再生成完整 PPT 方案。
+- `presentation-generation/ppt-making.md`：直接制作版，适合已有原始材料和 PPT 指导文件时，要求 ChatGPT 直接生成 PPTX 或提供可执行替代方案。
+- `presentation-generation/ppt-making-interactive.md`：交互制作版，适合先检查材料是否齐全、模板/页数/输出方式是否明确，再进入正式 PPT 制作。
 
 ### `templates/`
 
