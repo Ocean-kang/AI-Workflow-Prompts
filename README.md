@@ -1,6 +1,6 @@
 # AI-Workflow-Prompts
 
-这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、领域论文检索、科研代码生成和通用工作流模板等可复用提示词。
+这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、领域论文检索、科研代码生成、科研展示生成和通用工作流模板等可复用提示词。
 
 本仓库的核心使用方式是：先在网页版 ChatGPT 中上传任务材料，例如论文 PDF、代码仓库 ZIP、实验日志、需求说明或已有笔记，再粘贴或上传本仓库中对应的 Prompt，让 ChatGPT 按照结构化工作流完成分析、检索、修改建议或输出整理。
 
@@ -31,7 +31,7 @@
 ## 通用使用流程
 
 1. 明确任务目标：先写清楚要解决什么问题、输出给谁看、结果要用于什么下一步。
-2. 选择 Prompt：论文阅读用 `paper-reading/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，自定义工作流用 `templates/`。
+2. 选择 Prompt：论文阅读用 `paper-reading/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
 3. 准备输入材料：尽量上传原始文件，而不是只给零散描述。
 4. 改写占位符：将 `{USER_GOAL}`、`{USER_FOCUS}`、`{OUTPUT_FORMAT}` 等变量替换为当前任务内容。
 5. 约束输出：明确是否需要表格、分节报告、检查清单、Mermaid 图、代码 diff 或可执行步骤。
@@ -133,6 +133,38 @@
 4. 要求 ChatGPT 先理解代码和需求，再给出修改方案；不要在需求不清时直接生成代码。
 
 如果任务边界还不清楚，可使用 `code-generation/llm-research-code-generation-interactive.md`，先确认任务类型、可修改范围、输出形式、不可改内容和验证命令。
+
+### `presentation-generation/`
+
+用于上传论文 PDF、Markdown 笔记、Word 文档或项目材料后，让 ChatGPT 生成科研 PPT 的逐页规划和可用于制作 PPTX 的结构化规格。
+
+适用场景：
+
+- 论文汇报、组会分享、课程展示或 journal club。
+- 课题进展、项目总结、实验结果汇报。
+- 将较长材料压缩成简洁、专业、体面的科研展示。
+- 为 PPT 插件、自动化脚本或人工制作提供结构化输入。
+
+常见输入材料：
+
+- 论文 PDF、综述笔记、Markdown 阅读记录。
+- 项目说明、实验报告、阶段总结。
+- 少量辅助表格、图片、公式、结果截图或已有 PPT 草稿。
+- 展示场景、目标受众、建议时长、目标页数和特殊要求。
+
+使用方法：
+
+1. 在 ChatGPT 网页版上传科研材料。
+2. 选择并粘贴或上传以下任一 Prompt：
+   - `presentation-generation/research-ppt-generation.md`
+   - `presentation-generation/research-ppt-generation-interactive.md`
+3. 补充展示目标、目标受众、时长、页数、技术深度和特殊约束。
+4. 要求 ChatGPT 输出逐页 PPT 规划、图表建议、讲者备注和 JSON PPTX 生成规格。
+
+科研 PPT 生成入口说明：
+
+- `presentation-generation/research-ppt-generation.md`：直接执行版，适合展示目标、受众和页数已经比较明确时使用。
+- `presentation-generation/research-ppt-generation-interactive.md`：交互执行版，适合先澄清展示场景、受众、时长、页数、技术深度和设计限制，再生成完整 PPT 方案。
 
 ### `templates/`
 

@@ -2,7 +2,7 @@
 
 ## 仓库用途
 
-本仓库用于整理不同任务场景下的 AI 工作流和 Prompt 模板，包括论文阅读、领域论文检索、科研代码生成、通用 Prompt 结构等内容。
+本仓库用于整理不同任务场景下的 AI 工作流和 Prompt 模板，包括论文阅读、领域论文检索、科研代码生成、科研展示生成、通用 Prompt 结构等内容。
 
 核心目标是让 AI 辅助工作更可复用、更可检查。每个工作流都应清楚说明适用场景、所需输入、执行流程、输出要求和约束条件。
 
@@ -12,6 +12,7 @@
 - `paper-reading/`：用于论文阅读、理解和分析的 Prompt 工作流。
 - `domain-paper-search/`：用于特定领域论文检索、筛选和整理的 Prompt 工作流。
 - `code-generation/`：用于科研代码生成、理解和修改的 Prompt 工作流。
+- `presentation-generation/`：用于将论文、笔记、项目材料等科研内容转化为 PPT 逐页规划和 PPTX 生成规格的 Prompt 工作流。
 
 其中 `templates/interactive-controller-template.md` 是通用交互控制模块，用于定义 Ask-First / Interactive Mode 的需求澄清门控。面向 ChatGPT 网页版日常使用时，更推荐将该控制模块融合进专业任务模板，形成完整的 `*-interactive.md` 文件。
 
