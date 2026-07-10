@@ -1,6 +1,6 @@
 # AI-Workflow-Prompts
 
-这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、领域论文检索、科研代码生成、科研展示规划与制作、通用工作流模板等可复用提示词。
+这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、论文集合综述、领域论文检索、科研代码生成、科研展示规划与制作、通用工作流模板等可复用提示词。
 
 本仓库的核心使用方式是：先在网页版 ChatGPT 中上传任务材料，例如论文 PDF、代码仓库 ZIP、实验日志、需求说明或已有笔记，再粘贴或上传本仓库中对应的 Prompt，让 ChatGPT 按照结构化工作流完成分析、检索、修改建议或输出整理。
 
@@ -31,7 +31,7 @@
 ## 通用使用流程
 
 1. 明确任务目标：先写清楚要解决什么问题、输出给谁看、结果要用于什么下一步。
-2. 选择 Prompt：论文阅读用 `paper-reading/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
+2. 选择 Prompt：单篇论文阅读用 `paper-reading/`，已有论文集合的综述整理用 `literature-review/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
 3. 准备输入材料：尽量上传原始文件，而不是只给零散描述。
 4. 改写占位符：将 `{USER_GOAL}`、`{USER_FOCUS}`、`{OUTPUT_FORMAT}` 等变量替换为当前任务内容。
 5. 约束输出：明确是否需要表格、分节报告、检查清单、Mermaid 图、代码 diff 或可执行步骤。
@@ -80,6 +80,39 @@
 - `paper-reading/gpt-paper-reading.md`：当前版本，更强调事实来源、问题-方案-证据对应、方法机制、实验支撑和与用户研究方向的关系。
 - `paper-reading/gpt-paper-reading-interactive.md`：交互执行版，适合先澄清阅读目的、关注重点和输出用途，再执行完整论文分析。
 - `paper-reading/gpt-paper-reading-old.md`：旧版增强模板，结构完整，适合需要保留原有阅读框架或对比不同阅读风格时使用。
+
+### `literature-review/`
+
+用于上传领域论文集合 ZIP 和可选输出模板后，让 ChatGPT 完成文件审计、统一证据编码、跨论文综合、批判性评价、研究缺口验证和完整中文综述初稿。
+
+适用场景：
+
+- 将已经收集的论文整理成论文或学位论文的相关工作 / 综述章节。
+- 按方法路线、关键假设、实验证据和争议梳理一个领域。
+- 从已有工作中识别有依据的研究缺口，并形成可检验的研究问题。
+- 按用户提供的中英文模板生成最终中文综述和证据附件。
+
+常见输入材料：
+
+- 包含论文 PDF、附录或补充材料的 ZIP 文件。
+- 用户希望遵循的 Markdown、Word、PDF 或文字输出模板。
+- 综述主题、引导问题、研究背景、目标篇幅和引用格式。
+- 可选的已有阅读笔记或必须重点分析的论文列表。
+
+使用方法：
+
+1. 在 ChatGPT 网页版上传论文集合 ZIP 和可选输出模板。
+2. 任务已经明确时上传或粘贴 `literature-review/domain-literature-review.md`。
+3. 需要先确认综述问题、边界、用途或分批方式时，使用 `literature-review/domain-literature-review-interactive.md`。
+4. 要求 ChatGPT 先建立全量论文清单和覆盖率，再按 Assemble、Arrange、Assess 流程执行。
+5. 检查最终综述、分析矩阵、研究议程和文件内容是否使用中文，并确认关键判断能够追溯到论文位置。
+
+论文集合综述入口说明：
+
+- `literature-review/domain-literature-review.md`：直接执行版，适合主题、材料和输出要求已经明确时生成完整中文综述。
+- `literature-review/domain-literature-review-interactive.md`：交互执行版，会先检查文件并澄清关键需求，用户明确确认后再正式分析。
+
+本任务族默认把用户 ZIP 视为预选核心语料。没有完整检索、纳排和筛选记录时，输出称为“批判性整合综述”，不能冒充系统综述。它与 `domain-paper-search/` 的区别是：前者综合用户已经提供的论文集合，后者负责从网络检索和筛选领域论文。
 
 ### `domain-paper-search/`
 
