@@ -71,6 +71,7 @@
 1. 在 ChatGPT 网页版上传论文 PDF。
 2. 选择并粘贴或上传以下任一 Prompt：
    - `paper-reading/gpt-paper-reading-short.md`
+   - `paper-reading/gpt-paper-reading-medium.md`
    - `paper-reading/gpt-paper-reading.md`
    - `paper-reading/gpt-paper-reading-interactive.md`
    - `paper-reading/gpt-paper-reading-old.md`
@@ -80,6 +81,7 @@
 论文阅读入口说明：
 
 - `paper-reading/gpt-paper-reading-short.md`：五分钟快速筛读版，用于了解论文解决的问题、核心实现、关键实验、论文结论、局限和复现条件。
+- `paper-reading/gpt-paper-reading-medium.md`：中等深度直接执行版，保留研究问题、论文逻辑、创新、方法机制和论文结论分析，将报告控制在约 2500–4000 个中文字符。
 - `paper-reading/gpt-paper-reading.md`：当前版本，更强调事实来源、问题-方案-证据对应、方法机制、实验支撑和与用户研究方向的关系。
 - `paper-reading/gpt-paper-reading-interactive.md`：交互执行版，适合先澄清阅读目的、关注重点和输出用途，再执行完整论文分析。
 - `paper-reading/gpt-paper-reading-old.md`：旧版增强模板，结构完整，适合需要保留原有阅读框架或对比不同阅读风格时使用。
