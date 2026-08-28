@@ -51,14 +51,15 @@
 
 ### `paper-reading/`
 
-用于上传论文 PDF 或提供论文名称后，让 ChatGPT 进行快速筛读、系统化精读或顶会级创新强度审计，包括问题识别、方法拆解、实验分析、贡献提取和研究价值判断。
+用于上传论文 PDF 或提供论文名称后，让 ChatGPT 进行快速筛读、系统化精读或论文创新与认知修正分析，包括问题识别、方法拆解、实验分析、贡献提取和研究价值判断。
 
 适用场景：
 
 - 精读单篇论文。
 - 在五分钟内了解论文解决的问题、核心实现、关键证据和结论。
 - 判断论文贡献、局限和实验可信度。
-- 提取论文真实创新点，并判断其属于顶会核心创新、证据不足的强命题、常规增量还是无法确认的贡献。
+- 说明论文如何发现前人未描述的现象，或如何通过关键实验补充、限制、削弱、推翻和替代既有论点。
+- 提取论文真实创新点，并简要判断其属于顶会核心创新、证据不足的强命题、常规增量还是无法确认的贡献。
 - 将论文内容转化为研究笔记、组会材料或后续实验参考。
 
 常见输入材料：
@@ -82,7 +83,7 @@
 3. 补充你的研究背景、关注问题和希望输出的深度。
 4. 要求 ChatGPT 优先依据论文 PDF，不确定信息必须明确标注。
 
-如果使用顶会级创新分析模板，也可以不上传 PDF，直接提供论文名称。模板会优先从官方 proceedings、OpenReview、arXiv、DOI、作者或项目主页寻找并核实全文；只有摘要或二手材料时不会给出正式顶会强度评级。
+如果使用创新与认知修正分析模板，也可以不上传 PDF，直接提供论文名称。模板会优先从官方 proceedings、OpenReview、arXiv、DOI、作者或项目主页寻找并核实全文；只有摘要或二手材料时不会给出正式认知修正结论或顶会强度评级。
 
 论文阅读入口说明：
 
@@ -91,10 +92,10 @@
 - `paper-reading/gpt-paper-reading.md`：当前版本，更强调事实来源、问题-方案-证据对应、方法机制、实验支撑和与用户研究方向的关系。
 - `paper-reading/gpt-paper-reading-interactive.md`：交互执行版，适合先澄清阅读目的、关注重点和输出用途，再执行完整论文分析。
 - `paper-reading/gpt-paper-reading-old.md`：旧版增强模板，结构完整，适合需要保留原有阅读框架或对比不同阅读风格时使用。
-- `paper-reading/top-conference-innovation-analysis.md`：顶会级创新提取与评估直接执行版，聚焦 Existing Belief、实际新增量、证据、替代解释、适用边界和 Reviewer Tests，不生成新的研究点子。
-- `paper-reading/top-conference-innovation-analysis-interactive.md`：对应的交互执行版，会先确认论文身份、分析用途、比较范围和输出深度，再执行同一套创新证据审计。
+- `paper-reading/top-conference-innovation-analysis.md`：创新与认知修正分析直接执行版，重点解释“旧认知 → 新现象与关键实验 → 新论点”，区分补充、限制、削弱和推翻；默认核心分析约 2000–3000 字，之后附 300–500 字总结。
+- `paper-reading/top-conference-innovation-analysis-interactive.md`：对应的交互执行版，会先确认论文身份、关注论点、比较范围和输出深度，再执行同一套认知修正分析。
 
-`gpt-paper-reading*.md` 负责理解整篇论文的问题、方法、实验和结论；`top-conference-innovation-analysis*.md` 不替代综合精读，而是专门判断论文贡献的真实强度及其是否达到顶会核心创新门槛。
+`gpt-paper-reading*.md` 负责理解整篇论文的问题、方法、实验和结论；`top-conference-innovation-analysis*.md` 不替代综合精读，而是专门说明论文改变了领域的哪些认识、证据能支持多强的修正，并在总结中简要判断创新强度。
 
 ### `literature-review/`
 
