@@ -31,7 +31,7 @@
 ## 通用使用流程
 
 1. 明确任务目标：先写清楚要解决什么问题、输出给谁看、结果要用于什么下一步。
-2. 选择 Prompt：单篇论文阅读用 `paper-reading/`，已有论文集合的综述整理用 `literature-review/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
+2. 选择 Prompt：单篇论文阅读用 `paper-reading/`，按科研流程理解论文如何得出结论用 `paper-research-process/`，已有论文集合的综述整理用 `literature-review/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
 3. 准备输入材料：尽量上传原始文件，而不是只给零散描述。
 4. 改写占位符：将 `{USER_GOAL}`、`{USER_FOCUS}`、`{OUTPUT_FORMAT}` 等变量替换为当前任务内容。
 5. 约束输出：明确是否需要表格、分节报告、检查清单、Mermaid 图、代码 diff 或可执行步骤。
@@ -96,6 +96,19 @@
 - `paper-reading/top-conference-innovation-analysis-interactive.md`：对应的交互执行版，会先确认论文身份、关注论点、比较范围和输出深度，再执行同一套认知修正分析。
 
 `gpt-paper-reading*.md` 负责理解整篇论文的问题、方法、实验和结论；`top-conference-innovation-analysis*.md` 不替代综合精读，而是专门说明论文改变了领域的哪些认识、证据能支持多强的修正，并在总结中简要判断创新强度。
+
+### `paper-research-process/`
+
+按 Introduction（引言）、Related Work（相关工作）、Method（方法）、Results（结果）、Conclusion（结论）五阶段，循序讲解一篇论文为什么研究、具体怎么做、证据如何导向结论。流程已写入模板，无需额外上传流程图片。
+
+- [直接执行版](paper-research-process/paper-research-process.md)：论文身份明确、材料充分时直接分析。
+- [交互执行版](paper-research-process/paper-research-process-interactive.md)：先澄清阅读背景、关注点和深度，用户确认后分析。
+
+上传任一模板与论文 PDF，或上传模板并提供论文名称即可；名称输入会触发全文检索与身份核实。只有摘要或无法取得全文时，只给有限概览并请求补充材料。每个版本均可独立使用。
+
+默认中文、循序讲透，重点解释设计理由与关键证据，并用“问题 → 设计 → 证据 → 结论”表串联全文。科研英文术语首次出现附括号中文译名，例如 Open-Vocabulary（开放词汇）与 Open-World（开放世界）按含义区分。作者结论与分析判断分别标注。
+
+该目录侧重科研论证流程的教学式讲解；`paper-reading/` 保留综合精读、快速筛读和创新分析等用途。
 
 ### `literature-review/`
 

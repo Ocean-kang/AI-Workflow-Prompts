@@ -10,6 +10,7 @@
 
 - `templates/`：通用模板，包括工作流模板、Prompt 模板和输出格式模板。
 - `paper-reading/`：用于论文阅读、理解和分析的 Prompt 工作流。
+- `paper-research-process/`：按引言、相关工作、方法、结果、结论五阶段讲解单篇论文，串联问题、设计、证据与结论，提供直接执行版和交互版。
 - `literature-review/`：用于对用户提供的领域论文集合进行语料审计、跨论文综合、批判性评价、研究缺口分析和中文综述写作的 Prompt 工作流。
 - `domain-paper-search/`：用于特定领域论文检索、筛选和整理的 Prompt 工作流。
 - `code-generation/`：用于科研代码生成、理解和修改的 Prompt 工作流。
