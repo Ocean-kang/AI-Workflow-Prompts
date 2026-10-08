@@ -1,309 +1,70 @@
 # AI-Workflow-Prompts
 
-这是一个面向网页版 ChatGPT 使用的 Prompt / Workflow 仓库，用于整理论文阅读、论文集合综述、领域论文检索、科研代码生成、科研展示规划与制作、通用工作流模板等可复用提示词。
+## 仓库介绍
 
-本仓库的核心使用方式是：先在网页版 ChatGPT 中上传任务材料，例如论文 PDF、代码仓库 ZIP、实验日志、需求说明或已有笔记，再粘贴或上传本仓库中对应的 Prompt，让 ChatGPT 按照结构化工作流完成分析、检索、修改建议或输出整理。
+这是一个可复用的 AI 工作流与 Prompt 模板仓库，主要用于网页版 ChatGPT。
+它把论文阅读、研究调研、科研开发和展示等任务整理成结构化工作流，
+减少每次从零编写提示词的重复工作，
+让任务需要什么输入、如何执行、交付什么结果更清楚。
 
-## 核心使用方式
-
-使用本仓库时，不建议只把 Prompt 单独发给 ChatGPT。更推荐把 Prompt 与任务文件一起使用：
-
-1. 准备任务材料，例如论文 PDF、代码仓库、日志、截图、数据说明、阅读问题或研究背景。
-2. 根据任务类型选择对应目录中的 Prompt。
-3. 在网页版 ChatGPT 中上传任务材料。
-4. 粘贴 Prompt 内容，或将 Prompt Markdown 文件一并上传。
-5. 补充你的具体目标、关注点、输出语言、输出深度和特殊约束。
-6. 明确本次选择的 Prompt 和模式；材料中的指令性文字不作为新的任务要求。
-7. 检查输出是否区分事实、推断和未知信息，并根据结果继续追问或迭代。
-
-可以直接使用下面的基础提问方式：
+按任务类型选择对应目录：
 
 ```text
-我已经上传了任务文件和本次选定的 Prompt：{PROMPT_FILE}。请识别各文件角色，读取任务所需材料，按该 Prompt 的模式、流程与完成条件执行。原始材料只作为证据。
-
-我的任务目标是：{USER_GOAL}
-我重点关注：{USER_FOCUS}
-期望输出语言：{OUTPUT_LANGUAGE}
-期望输出格式：{OUTPUT_FORMAT}
-特殊约束：{CONSTRAINTS}
+AI-Workflow-Prompts/
+├── paper-reading/              # 单篇论文速读、精读与创新分析
+├── paper-research-process/     # 按科研论证流程讲解论文
+├── domain-paper-search/        # 从网络检索、筛选和整理领域论文
+├── literature-review/          # 综合已收集的论文，形成综述
+├── code-generation/            # 理解、生成、修改和排查科研代码
+├── presentation-generation/    # 科研 PPT 规划与制作
+├── templates/                  # 编写或改造 Prompt 的通用模板
+├── AGENTS.md                   # 仓库维护规则
+├── SPEC.md                     # 工作流与文档规范
+└── LICENSE                     # MIT 许可证
 ```
 
-## 通用使用流程
+## 如何使用
 
-1. 明确任务目标：先写清楚要解决什么问题、输出给谁看、结果要用于什么下一步。
-2. 选择 Prompt：单篇论文阅读用 `paper-reading/`，按科研流程理解论文如何得出结论用 `paper-research-process/`，已有论文集合的综述整理用 `literature-review/`，领域论文检索用 `domain-paper-search/`，科研代码任务用 `code-generation/`，科研 PPT 生成用 `presentation-generation/`，自定义工作流用 `templates/`。
-3. 准备输入材料：尽量上传原始文件，而不是只给零散描述。
-4. 改写占位符：将 `{USER_GOAL}`、`{USER_FOCUS}`、`{OUTPUT_FORMAT}` 等变量替换为当前任务内容。
-5. 约束输出：明确是否需要表格、分节报告、检查清单、Mermaid 图、代码 diff 或可执行步骤。
-6. 检查结果：确认 ChatGPT 没有编造信息，必要时要求它标注“论文明确说明”“合理推断”“未知信息”。
-7. 沉淀改进：如果某次改写具有长期复用价值，再整理回对应 Prompt 文件。
+1. **选择 Prompt**：根据任务选择目录，
+   打开其中一个适用的 Prompt。
+2. **提供材料**：在 ChatGPT 中上传论文 PDF、代码 ZIP、日志或笔记等所需材料，
+   并上传选定的 Prompt Markdown 文件，或粘贴其正文。
+   检索任务可直接提供主题，无需先上传论文。
+3. **说明目标并开始**：补充本次想解决的问题，
+   按下面两种方式之一发送请求。
 
-## 两种使用模式
+下面的示例适用于各任务目录。
+将 `{PROMPT_FILE}` 换成选定的 Prompt 文件名，
+将 `{USER_GOAL}` 等占位符换成实际内容；
+没有补充要求时，删除对应行即可。
 
-本仓库同时支持两种 Prompt 使用方式：
+### 直接执行（Direct Mode）
 
-- Direct Mode：直接执行版模板。适合任务目标、输入材料、输出格式和约束条件已经明确的场景。使用时上传任务文件，并粘贴或上传对应的普通模板，例如 `gpt-paper-reading.md`。
-- Interactive Mode / Ask-First Mode：交互询问版模板。适合需求还不完全明确的场景。ChatGPT 会先检查文件，每轮最多提出 3 个必要问题，用户明确开始后执行。前文或首条请求已经明确要求直接执行也算确认，不重复索要；仅上传材料、回答偏好或沉默不算确认。
+适合任务目标和所需材料已经明确时使用。
+选择标明 Direct Mode 的模板；
+可选项沿用模板默认值，只在缺少关键输入时澄清。
 
-日常使用时，推荐直接上传已经融合好的 `*-interactive.md` 专业模板和任务文件，而不是每次同时上传“总控模板 + 专业模板 + 文件”。
+```text
+请按我上传或粘贴的 Prompt「{PROMPT_FILE}」直接执行，结合本次提供的材料完成任务。
 
-直接版会对可选项使用默认值，只澄清影响正确性或范围的阻塞信息。交互版内含完整专业流程，可独立使用；无需额外上传直接版。占位符未替换视为未提供，不能用默认假设补造论文内容或实验结果。
+任务目标：{USER_GOAL}
+补充要求（可选）：{REQUIREMENTS}
+```
 
-## GPT-Astra 适配与模板关系
+### 先询问再执行（Interactive Mode）
 
-本仓库按 GPT-Astra（官方名称 GPT-6 Astra）的提示词指导整理执行边界、确认行为、输出与验证要求；模型由使用环境选择，上传 Markdown 不会切换模型或启用工具。适配依据是 [OpenAI 官方模型指导](https://developers.openai.com/api/docs/guides/latest-model)（2026-09-14 核对）。此处是 Prompt 改进，不包含 API 参数或运行框架迁移，也不声称完成真实模型效果基准测试。
+适合需要先澄清目标、关注点或输出要求时使用。
+选择 `*-interactive.md` 模板；
+交互版已包含完整流程，可独立使用，无需同时上传直接版。
 
-| 内容 | 职责与衔接 |
-| --- | --- |
-| AGENTS.md / SPEC.md | 分别约束仓库维护与共享文档规范，日常执行专业任务无需上传 |
-| templates/ | 编写新工作流、装配指定 workflow、定义输出或融合交互门控 |
-| 论文检索 | 提供经过核验的候选与来源，可供后续阅读或人工收集综述语料 |
-| 论文阅读 / 科研流程讲解 / 创新分析 | 各有分析用途，按需选一个；其输出可作为带来源的笔记供后续展示使用 |
-| 论文集合综述 | 综合用户预选材料，输出中文正文与证据附件；不自动执行全网系统综述 |
-| 科研代码 | 沿相关调用链理解与修改，保护实验协议，交付修改及真实验证状态 |
-| PPT 规划 → 制作 | 前者交付逐页 Markdown；后者同时读取原材料与规划，交付 PPTX 或明确标注的替代方案 |
+```text
+请按我上传或粘贴的交互版 Prompt「{PROMPT_FILE}」开展任务。
 
-这些是材料交接关系，不代表文件名会触发自动工具调用。工具能力以当前环境为准；文件、检索和验证结果必须有实际证据。维护验收情境见 [SPEC.md](SPEC.md)。
+初步目标：{USER_GOAL}
+请先检查材料并询问必要问题，等我明确说“开始”后再正式执行。
+```
 
-## Prompt 文件夹说明
+回答必要问题后，发送“开始”即可进入正式执行。
 
-### `paper-reading/`
-
-用于上传论文 PDF 或提供论文名称后，让 ChatGPT 进行快速筛读、系统化精读或论文创新与认知修正分析，包括问题识别、方法拆解、实验分析、贡献提取和研究价值判断。
-
-适用场景：
-
-- 精读单篇论文。
-- 在五分钟内了解论文解决的问题、核心实现、关键证据和结论。
-- 判断论文贡献、局限和实验可信度。
-- 说明论文如何发现前人未描述的现象，或如何通过关键实验补充、限制、削弱、推翻和替代既有论点。
-- 提取论文真实创新点，并简要判断其属于顶会核心创新、证据不足的强命题、常规增量还是无法确认的贡献。
-- 将论文内容转化为研究笔记、组会材料或后续实验参考。
-
-常见输入材料：
-
-- 论文 PDF。
-- 论文完整或近似名称；创新分析模板可以据此检索并核实权威全文。
-- arXiv、OpenReview、会议页面或项目主页链接。
-- 用户自己的研究方向、重点问题或已有阅读笔记。
-
-使用方法：
-
-1. 在 ChatGPT 网页版上传论文 PDF。
-2. 选择并粘贴或上传以下任一 Prompt：
-   - `paper-reading/gpt-paper-reading-short.md`
-   - `paper-reading/gpt-paper-reading-medium.md`
-   - `paper-reading/gpt-paper-reading.md`
-   - `paper-reading/gpt-paper-reading-interactive.md`
-   - `paper-reading/gpt-paper-reading-old.md`
-   - `paper-reading/top-conference-innovation-analysis.md`
-   - `paper-reading/top-conference-innovation-analysis-interactive.md`
-3. 补充你的研究背景、关注问题和希望输出的深度。
-4. 要求 ChatGPT 优先依据论文 PDF，不确定信息必须明确标注。
-
-如果使用创新与认知修正分析模板，也可以不上传 PDF，直接提供论文名称。模板会优先从官方 proceedings、OpenReview、arXiv、DOI、作者或项目主页寻找并核实全文；只有摘要或二手材料时不会给出正式认知修正结论或顶会强度评级。
-
-论文阅读入口说明：
-
-- `paper-reading/gpt-paper-reading-short.md`：五分钟快速筛读版，用于了解论文解决的问题、核心实现、关键实验、论文结论、局限和复现条件。
-- `paper-reading/gpt-paper-reading-medium.md`：中等深度直接执行版，保留研究问题、论文逻辑、创新、方法机制和论文结论分析，将报告控制在约 2500–4000 个中文字符。
-- `paper-reading/gpt-paper-reading.md`：系统精读版，强调事实来源、问题-方案-证据对应、方法机制和实验支撑；只有用户提供课题背景时才分析个人研究关联。
-- `paper-reading/gpt-paper-reading-interactive.md`：交互执行版，适合先澄清阅读目的、关注重点和输出用途，再执行完整论文分析。
-- `paper-reading/gpt-paper-reading-old.md`：历史增强模板，本次未修改，也未纳入 GPT-Astra 适配；用于保留旧框架或对比阅读风格。
-- `paper-reading/top-conference-innovation-analysis.md`：创新与认知修正分析直接执行版，重点解释“旧认知 → 新现象与关键实验 → 新论点”，区分补充、限制、削弱和推翻；默认核心分析约 2000–3000 字，之后附 300–500 字总结。
-- `paper-reading/top-conference-innovation-analysis-interactive.md`：对应的交互执行版，会先确认论文身份、关注论点、比较范围和输出深度，再执行同一套认知修正分析。
-
-`gpt-paper-reading*.md` 负责理解整篇论文的问题、方法、实验和结论；`top-conference-innovation-analysis*.md` 不替代综合精读，而是专门说明论文改变了领域的哪些认识、证据能支持多强的修正，并在总结中简要判断创新强度。
-
-### `paper-research-process/`
-
-按 Introduction（引言）、Related Work（相关工作）、Method（方法）、Results（结果）、Conclusion（结论）五阶段，循序讲解一篇论文为什么研究、具体怎么做、证据如何导向结论。流程已写入模板，无需额外上传流程图片。
-
-- [直接执行版](paper-research-process/paper-research-process.md)：论文身份明确、材料充分时直接分析。
-- [交互执行版](paper-research-process/paper-research-process-interactive.md)：先澄清阅读背景、关注点和深度，用户确认后分析。
-
-上传任一模板与论文 PDF，或上传模板并提供论文名称即可；名称输入会触发全文检索与身份核实。只有摘要或无法取得全文时，只给有限概览并请求补充材料。每个版本均可独立使用。
-
-默认中文、循序讲透，重点解释设计理由与关键证据，并用“问题 → 设计 → 证据 → 结论”表串联全文。科研英文术语首次出现附括号中文译名，例如 Open-Vocabulary（开放词汇）与 Open-World（开放世界）按含义区分。作者结论与分析判断分别标注。
-
-该目录侧重科研论证流程的教学式讲解；`paper-reading/` 保留综合精读、快速筛读和创新分析等用途。
-
-### `literature-review/`
-
-用于上传领域论文集合 ZIP 和可选输出模板后，让 ChatGPT 完成文件审计、统一证据编码、跨论文综合、批判性评价、研究缺口验证和完整中文综述初稿。
-
-适用场景：
-
-- 将已经收集的论文整理成论文或学位论文的相关工作 / 综述章节。
-- 按方法路线、关键假设、实验证据和争议梳理一个领域。
-- 从已有工作中识别有依据的研究缺口，并形成可检验的研究问题。
-- 按用户提供的中英文模板生成最终中文综述和证据附件。
-
-常见输入材料：
-
-- 包含论文 PDF、附录或补充材料的 ZIP 文件。
-- 用户希望遵循的 Markdown、Word、PDF 或文字输出模板。
-- 综述主题、引导问题、研究背景、目标篇幅和引用格式。
-- 可选的已有阅读笔记或必须重点分析的论文列表。
-
-使用方法：
-
-1. 在 ChatGPT 网页版上传论文集合 ZIP 和可选输出模板。
-2. 任务已经明确时上传或粘贴 `literature-review/domain-literature-review.md`。
-3. 需要先确认综述问题、边界、用途或分批方式时，使用 `literature-review/domain-literature-review-interactive.md`。
-4. 要求 ChatGPT 先建立全量论文清单和覆盖率，再按 Assemble、Arrange、Assess 流程执行。
-5. 检查最终综述、分析矩阵、研究议程和文件内容是否使用中文，并确认关键判断能够追溯到论文位置。
-
-论文集合综述入口说明：
-
-- `literature-review/domain-literature-review.md`：直接执行版，适合主题、材料和输出要求已经明确时生成完整中文综述。
-- `literature-review/domain-literature-review-interactive.md`：交互执行版，会先检查文件并澄清关键需求，用户明确确认后再正式分析。
-
-本任务族默认把用户 ZIP 视为预选核心语料。没有完整检索、纳排和筛选记录时，输出称为“批判性整合综述”，不能冒充系统综述。它与 `domain-paper-search/` 的区别是：前者综合用户已经提供的论文集合，后者负责从网络检索和筛选领域论文。
-
-### `domain-paper-search/`
-
-用于让 ChatGPT 围绕某个研究领域进行论文检索、筛选、分类和研究脉络整理。
-
-适用场景：
-
-- 调研一个方向近几年的顶会论文。
-- 判断某个研究问题是否已有成熟路线。
-- 找代表论文、阅读顺序、方法分类和潜在研究空白。
-
-常见输入材料：
-
-- 研究领域或关键词。
-- 时间范围。
-- 优先会议列表。
-- 是否允许包含 arXiv。
-- 用户自己的研究背景和重点关注问题。
-
-使用方法：
-
-1. 打开 `domain-paper-search/domain-paper-search.md`。
-2. 将 `{DOMAIN_OR_KEYWORDS}`、`{YEAR_RANGE}`、`{TOP_CONFERENCES}`、`{ALLOW_ARXIV}`、`{USER_FOCUS}` 等占位符替换为当前需求。
-3. 在 ChatGPT 网页版粘贴 Prompt，并明确要求它进行网络检索。
-4. 检查输出是否核实 venue，是否把 arXiv 与正式发表论文区分开。
-
-如果检索范围还不明确，可使用 `domain-paper-search/domain-paper-search-interactive.md`，让 ChatGPT 先确认关键词、排除方向、时间范围、会议范围和 arXiv 规则。
-
-### `code-generation/`
-
-用于上传科研代码仓库或关键源码后，让 ChatGPT 帮助理解代码、定位问题、设计最小修改方案并给出验证方法。
-
-适用场景：
-
-- 科研实验代码生成或修改。
-- 训练、评估、推理流程理解。
-- 报错、指标异常、配置问题或复现问题排查。
-- 要求 ChatGPT 给出局部、可验证、尽量不破坏实验设置的修改建议。
-
-常见输入材料：
-
-- 代码仓库 ZIP 或关键文件。
-- 配置文件、运行脚本、报错日志、实验背景。
-- 当前问题、目标需求、不能修改的约束和期望输出格式。
-
-使用方法：
-
-1. 在 ChatGPT 网页版上传代码仓库或相关文件。
-2. 粘贴 `code-generation/llm-research-code-generation-prompt.md`。
-3. 补充 `{PROJECT_BACKGROUND}`、`{CURRENT_PROBLEMS}`、`{TARGET_REQUIREMENTS}`、`{CONSTRAINTS}` 和 `{EXPECTED_OUTPUT}`。
-4. 要求 ChatGPT 先理解相关调用链和需求，再落实最小修改；区分实际运行的验证与尚未运行的建议命令。
-
-如果任务边界还不清楚，可使用 `code-generation/llm-research-code-generation-interactive.md`，先确认任务类型、可修改范围、输出形式、不可改内容和验证命令。
-
-### `presentation-generation/`
-
-用于上传论文 PDF、Markdown 笔记、Word 文档或项目材料后，让 ChatGPT 完成科研 PPT 的两阶段工作流：先生成可保存的 PPT 制作规划 Markdown，再根据目标材料和规划 Markdown 执行 PPT 制作并生成可下载 PPTX。
-
-适用场景：
-
-- 论文汇报、组会分享、课程展示或 journal club。
-- 课题进展、项目总结、实验结果汇报。
-- 将较长材料压缩成简洁、专业、体面的科研展示。
-- 为后续 `ppt-making`、PPT 插件、自动化脚本或人工制作提供明确制作规划。
-- 在已有 PPT 制作规划 Markdown 基础上生成实际 PPTX。
-
-常见输入材料：
-
-- 论文 PDF、综述笔记、Markdown 阅读记录。
-- 项目说明、实验报告、阶段总结。
-- 少量辅助表格、图片、公式、结果截图或已有 PPT 草稿。
-- 展示场景、目标受众、建议时长、目标页数和特殊要求。
-- 上一步 Prompt 生成的 PPT 制作规划 Markdown、逐页规划、图表建议和讲者备注。
-- 可选 PPT 模板、学校/课题组风格、Logo、配色、字体或页面比例要求。
-
-使用方法：
-
-规划阶段：
-
-1. 在 ChatGPT 网页版上传目标材料，例如论文 PDF、项目材料、实验报告或 Markdown 笔记。
-2. 选择并粘贴或上传以下任一 Prompt：
-   - `presentation-generation/research-ppt-generation.md`
-   - `presentation-generation/research-ppt-generation-interactive.md`
-3. 补充展示目标、目标受众、时长、页数、技术深度和特殊约束。
-4. 要求 ChatGPT 输出可保存为 Markdown 的 PPT 制作规划文件，包括逐页规划、图表建议、版式建议、讲者备注、素材依据和制作约束。
-5. 默认字体规则为：中文使用宋体，英文和数字使用 Times New Roman；有明确模板或字体要求时按用户要求执行。
-
-制作阶段：
-
-1. 在 ChatGPT 网页版上传目标材料、上一阶段生成的 PPT 制作规划 Markdown，以及可选 PPT 模板或素材。
-2. 选择并粘贴或上传以下任一 Prompt：
-   - `presentation-generation/ppt-making.md`
-   - `presentation-generation/ppt-making-interactive.md`
-3. 要求 ChatGPT 按 PPT 制作规划 Markdown 优先生成可下载 `.pptx`。
-4. 如果当前环境不能生成文件，要求它输出完整 `python-pptx` 脚本、JSON slide spec、素材清单和人工制作说明。
-
-科研 PPT 生成入口说明：
-
-- `presentation-generation/research-ppt-generation.md`：直接规划版，适合展示目标、受众和页数已经比较明确时，生成 PPT 制作规划 Markdown。
-- `presentation-generation/research-ppt-generation-interactive.md`：交互规划版，适合先澄清展示场景、受众、时长、页数、技术深度和设计限制，再生成 PPT 制作规划 Markdown。
-- `presentation-generation/ppt-making.md`：直接制作版，适合已有目标材料和 PPT 制作规划 Markdown 时，要求 ChatGPT 直接生成 PPTX 或提供可执行替代方案。
-- `presentation-generation/ppt-making-interactive.md`：交互制作版，适合先检查目标材料、规划 Markdown、模板/页数/输出方式是否明确，再进入正式 PPT 制作。
-
-### `templates/`
-
-用于创建新的通用 Prompt 或 Workflow，也可以作为改写现有 Prompt 的结构参考。
-
-包含文件：
-
-- `templates/workflow-template.md`：工作流模板，适合定义完整任务流程、输入、角色、输出、约束和失败处理。
-- `templates/prompt-template.md`：通用 Prompt 模板，适合快速组织“上传文件 + 按 workflow 执行”的任务。
-- `templates/output-format-template.md`：输出格式模板，适合统一报告、表格、清单或结构化结果。
-- `templates/interactive-controller-template.md`：通用交互控制模块，适合融合到专业任务模板中，形成完整的 `*-interactive.md` 交互执行版模板。
-
-适用场景：
-
-- 当前任务没有现成 Prompt，需要新建一个。
-- 需要把一次成功的临时 Prompt 整理成长期可复用模板。
-- 需要统一不同任务的输入、执行步骤和输出格式。
-
-使用方法：
-
-1. 选择最接近需求的模板。
-2. 替换其中的变量占位符。
-3. 删除不适用的小节，补充任务特有的约束和失败处理。
-4. 确认新 Prompt 不只服务某一次临时任务。
-
-## Prompt 编写与改写约定
-
-- 面向共享使用的说明文档默认使用中文。
-- Prompt 应具体、结构化、可复用，避免只有宽泛要求。
-- 优先包含使用场景、所需输入、角色设定、任务目标、执行流程、输出要求、约束条件和失败处理。
-- 变量占位符使用清晰格式，例如 `{USER_GOAL}`、`{INPUT_MATERIAL}`、`{OUTPUT_FORMAT}`。
-- 分析型任务应要求区分已确认事实、合理推断和未知信息。
-- 不要在通用模板中加入缺乏依据的事实、结论或领域判断。
-- 修改已有 Prompt 时，应保留原本的目标用户、任务范围和输出意图。
-- 新增重要任务 Prompt 时，默认同时提供 Direct Mode 通用执行版和 Interactive Mode 交互询问版；交互版不替代直接执行版。
-
-## 本地任务记录
-
-`local-tasks/` 用于保存本地任务计划、执行记录和临时上下文，例如 `local-tasks/task001.md`、`local-tasks/task002.md`。
-
-这些文件属于个人工作记录，不属于共享仓库文档，已通过 `.gitignore` 忽略。长期可共享的规则应写入 `AGENTS.md` 或 `SPEC.md`，不要只保存在本地任务文件中。
-
-## 许可证
-
-本仓库使用 MIT License。详细内容见 `LICENSE`。
+收到结果后，检查关键结论的依据，
+并留意未确认的信息和缺失材料带来的限制。
