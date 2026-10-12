@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">AI-Workflow-Prompts</title>
+  <desc id="desc">可复用的科研工作流与 Prompt 模板：提供材料，选择 Prompt，获得任务交付。</desc>
+
+  <rect width="1200" height="400" rx="12" fill="#FAFAF7"/>
+
+  <g id="project-title" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif">
+    <text x="56" y="61" fill="#666666" font-size="24" letter-spacing="2">科研工作流 / PROMPT LIBRARY</text>
+    <text x="52" y="146" fill="#171717" font-size="72" font-weight="650" letter-spacing="-2">AI-Workflow-Prompts</text>
+    <text x="56" y="211" fill="#666666" font-size="40">把科研任务，写成可复用的工作流。</text>
+  </g>
+
+  <path d="M56 250H1144" fill="none" stroke="#D9D9D4" stroke-width="2"/>
+
+  <g id="workflow" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif" fill="#171717" font-size="48" font-weight="500">
+    <text x="56" y="335">材料</text>
+    <text x="484" y="335">Prompt</text>
+    <text x="1000" y="335">交付</text>
+    <g fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M236 318H400m-12-12 12 12-12 12"/>
+      <path d="M746 318H914m-12-12 12 12-12 12"/>
+    </g>
+  </g>
+</svg>
