@@ -18,6 +18,7 @@
 | [科研流程讲解](./paper-research-process/) | 串联论文的问题、设计、证据与结论 |
 | [领域论文检索](./domain-paper-search/) | 从网络检索、筛选和整理领域论文 |
 | [论文集合综述](./literature-review/) | 综合已收集的论文，形成批判性综述 |
+| [科研 Idea](./research-ideation/) | 生成研究思路，或检查已有 idea 的创新性与重合风险 |
 | [科研代码](./code-generation/) | 理解、生成、修改和排查科研代码 |
 | [科研 PPT](./presentation-generation/) | 先生成制作规划，再按规划制作 PPTX |
 | [通用模板](./templates/) | 编写或改造 Prompt、工作流与输出格式 |
